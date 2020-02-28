@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CharacterCard from "./CharacterCard";
+import SearchForm from "./SearchForm";
 
 export default function CharacterList(props) {
   // TODO: Add useState to track data from useEffect
   const [list, setList] = useState([]);
+  const [originalList, setOriginalList] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
@@ -16,6 +19,7 @@ export default function CharacterList(props) {
       .then(response => {
         console.log(response.data);
         setList(response.data.results);
+        setOriginalList(response.data.results);
       })
       .catch(error => {
         console.log("Server Error", error);
@@ -24,10 +28,23 @@ export default function CharacterList(props) {
     getList();
   }, []);
 
+  useEffect(() => {
+    const results = originalList.filter(character =>
+      character.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setList(results);
+  }, [searchText]);
+
+  const setSearch = (s) => {
+    setSearchText(s);
+  }
+
   return (
-    <section className="character-list">
-      <h2>TODO: `array.map()` over your state here!</h2>
-      <div>
+    
+    <div>
+      <SearchForm setSearchText={setSearch} searchText={searchText} />
+      <section className="character-list">
+        <div>
         {list.map(character => (
           <CharacterCard 
             id={character.id}
@@ -35,8 +52,10 @@ export default function CharacterList(props) {
             image={character.image} />
 
         ))}
-      </div>
+        </div>
+      </section>
+    </div>
 
-    </section>
+  
   );
 }

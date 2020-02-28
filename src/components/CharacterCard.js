@@ -11,10 +11,10 @@ export default function CharacterCard(props) {
   `
   return (
     <CharacterCardStyle>
-      <span>todo: character</span>
+       <img src={props.image} />
       <p>{props.id}</p>
       <p>{props.name}</p>
-      <img src={props.image} />
+     
     </CharacterCardStyle>
   )
 }
