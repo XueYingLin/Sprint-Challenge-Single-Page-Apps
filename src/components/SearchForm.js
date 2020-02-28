@@ -7,7 +7,6 @@ export default function SearchForm(props) {
  
   return (
     <section className="search-form">
-     // Add a search form here
      <form style={{marginLeft: "10px"}}>
        <input id="search" name="textfield" type="text" placeholder="Search"
         onChange={onSearchChanged}
