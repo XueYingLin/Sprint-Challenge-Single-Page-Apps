@@ -27,7 +27,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+> Answer: A client-side routing interact to events by using the internal links, instead of using the external link, so that prevents the browser fire up from making hte HTTP Get request.
 
 ## Project Set Up
 
