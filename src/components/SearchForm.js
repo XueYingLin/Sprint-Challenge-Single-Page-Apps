@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function SearchForm(props) {
   const onSearchChanged = (event) => {
-    props.setSearchText(event.target.value);
+    props.onSearch(event.target.value);
   }
  
   return (

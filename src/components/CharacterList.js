@@ -42,7 +42,7 @@ export default function CharacterList(props) {
   return (
     
     <div>
-      <SearchForm setSearchText={setSearch} searchText={searchText} />
+      <SearchForm onSearch={setSearch} searchText={searchText} />
       <section className="character-list">
         <div>
         {list.map(character => (
